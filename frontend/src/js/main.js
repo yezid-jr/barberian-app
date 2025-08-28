@@ -9,16 +9,16 @@ class App {
     }
 
     init() {
-        // Verificar si hay usuario logueado
+        // Check if user is logged in
         this.checkAuthStatus();
 
-        // Configurar event listeners
+        // Setup event listeners
         this.setupEventListeners();
 
-        // Renderizar la página inicial
+        // Initial render
         this.renderNavigation();
 
-        console.log('🚀 Barberian App iniciada');
+        console.log('🚀 Barberian App started');
     }
 
     checkAuthStatus() {
@@ -28,7 +28,7 @@ class App {
         if (token && userData) {
             try {
                 this.currentUser = JSON.parse(userData);
-                console.log('Usuario autenticado:', this.currentUser);
+                console.log('Authenticated user:', this.currentUser);
             } catch (error) {
                 console.error('Error parsing user data:', error);
                 API.removeToken();
@@ -37,7 +37,7 @@ class App {
     }
 
     setupEventListeners() {
-        // Botones principales
+        // Login/Register buttons on home
         document.getElementById('btn-login')?.addEventListener('click', () => {
             this.showLoginForm();
         });
@@ -46,7 +46,7 @@ class App {
             this.showRegisterForm();
         });
 
-        // Navegación
+        // Navegation links
         document.addEventListener('click', (e) => {
             if (e.target.matches('[data-page]')) {
                 e.preventDefault();
@@ -55,25 +55,25 @@ class App {
             }
         });
     }
-
+    // Render navigation based on auth status
     renderNavigation() {
         const navMenu = document.getElementById('nav-menu');
 
         if (this.currentUser) {
-            // Usuario logueado
+            // User is logged in
             navMenu.innerHTML = `
-                <span class="text-gray-700">Hola, ${this.currentUser.full_name}</span>
-                <button data-page="profile" class="text-blue-600 hover:text-blue-800">Mi Perfil</button>
+                <span class="text-gray-700">Hi, ${this.currentUser.full_name}</span>
+                <button data-page="profile" class="text-blue-600 hover:text-blue-800">My Profile</button>
                 ${this.currentUser.role === 'admin' ?
                     '<button data-page="admin" class="text-purple-600 hover:text-purple-800">Admin</button>' :
                     ''
                 }
                 <button id="btn-logout" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">
-                    Cerrar Sesión
+                    Logout
                 </button>
             `;
 
-            // Event listener para logout
+            // Event listener for logout
             document.getElementById('btn-logout').addEventListener('click', () => {
                 this.logout();
             });
