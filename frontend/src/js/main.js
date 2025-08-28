@@ -78,10 +78,10 @@ class App {
                 this.logout();
             });
         } else {
-            // Usuario no logueado
+            // User is not logged in
             navMenu.innerHTML = `
-                <button data-page="login" class="text-blue-600 hover:text-blue-800">Iniciar Sesión</button>
-                <button data-page="register" class="text-green-600 hover:text-green-800">Registrarse</button>
+                <button data-page="login" class="text-blue-600 hover:text-blue-800">Login</button>
+                <button data-page="register" class="text-green-600 hover:text-green-800">Register</button>
             `;
         }
     }
@@ -113,25 +113,25 @@ class App {
         if (this.currentUser) {
             content.innerHTML = `
                 <div class="text-center py-20 fade-in">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Bienvenido de vuelta, ${this.currentUser.full_name}!</h2>
-                    <p class="text-gray-600 mb-8">¿Qué deseas hacer hoy?</p>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Welcome Back, ${this.currentUser.full_name}!</h2>
+                    <p class="text-gray-600 mb-8">The chair is ready for you.</p>
                     
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
                         ${this.currentUser.role === 'customer' ? `
                             <div class="card hover:shadow-lg transition-shadow cursor-pointer" data-page="appointments">
-                                <h3 class="text-xl font-bold mb-2">Mis Citas</h3>
-                                <p class="text-gray-600">Ver y gestionar tus citas</p>
+                                <h3 class="text-xl font-bold mb-2">My Appointments</h3>
+                                <p class="text-gray-600">View and manage your appointments</p>
                             </div>
                             <div class="card hover:shadow-lg transition-shadow cursor-pointer">
-                                <h3 class="text-xl font-bold mb-2">Agendar Cita</h3>
-                                <p class="text-gray-600">Reserva una nueva cita</p>
+                                <h3 class="text-xl font-bold mb-2">Schedule Appointment</h3>
+                                <p class="text-gray-600">Book a new appointment</p>
                             </div>
                         ` : ''}
                         
                         ${this.currentUser.role === 'admin' ? `
                             <div class="card hover:shadow-lg transition-shadow cursor-pointer" data-page="admin">
-                                <h3 class="text-xl font-bold mb-2">Panel Admin</h3>
-                                <p class="text-gray-600">Gestionar el sistema</p>
+                                <h3 class="text-xl font-bold mb-2">Admin Panel</h3>
+                                <p class="text-gray-600">Manage the system</p>
                             </div>
                         ` : ''}
                         
@@ -145,15 +145,15 @@ class App {
         } else {
             content.innerHTML = `
                 <div class="text-center py-20">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Bienvenido a Barberian</h2>
-                    <p class="text-gray-600 mb-8">Sistema de gestión de barberías</p>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Welcome to Barberian</h2>
+                    <p class="text-gray-600 mb-8">Style that never fades</p>
                     
                     <div class="space-x-4">
                         <button id="btn-login" class="btn-primary">
-                            Iniciar Sesión
+                            Login
                         </button>
                         <button id="btn-register" class="btn-success">
-                            Registrarse
+                            Register
                         </button>
                     </div>
                 </div>
@@ -168,7 +168,7 @@ class App {
         content.innerHTML = `
             <div class="max-w-md mx-auto mt-20 fade-in">
                 <div class="card">
-                    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Iniciar Sesión</h2>
+                    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
                     
                     <!-- Botón de Google OAuth -->
                     <button 
@@ -181,13 +181,13 @@ class App {
                             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
                             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                         </svg>
-                        <span>Continuar con Google</span>
+                        <span>Continue with Google</span>
                     </button>
                 
-                    <!-- Separador -->
+                    <!-- space -->
                     <div class="flex items-center justify-center my-4">
                         <div class="flex-grow border-t border-gray-300"></div>
-                        <span class="flex-shrink mx-4 text-gray-600">o</span>
+                        <span class="flex-shrink mx-4 text-gray-600">or</span>
                         <div class="flex-grow border-t border-gray-300"></div>
                     </div>
 
@@ -195,11 +195,11 @@ class App {
                         <div class="mb-4">
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                             <input type="email" id="email" name="email" required 
-                                   class="input-field" placeholder="tu@email.com">
+                                   class="input-field" placeholder="your@email.com">
                         </div>
                         
                         <div class="mb-6">
-                            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Contraseña</label>
+                            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
                             <input type="password" id="password" name="password" required 
                                    class="input-field" placeholder="********">
                         </div>
@@ -207,15 +207,15 @@ class App {
                         <div id="login-error" class="hidden mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded"></div>
                         
                         <button type="submit" class="w-full btn-primary mb-4">
-                            Iniciar Sesión
+                            Sign in
                         </button>
                     </form>
                     
                     <div class="text-center">
                         <p class="text-sm text-gray-600">
-                            ¿No tienes cuenta? 
+                            Don't have an account? 
                             <button data-page="register" class="text-blue-600 hover:text-blue-800 underline">
-                                Regístrate aquí
+                                Register here
                             </button>
                         </p>
                     </div>
@@ -227,6 +227,11 @@ class App {
         document.getElementById('login-form').addEventListener('submit', (e) => {
             this.handleLogin(e);
         });
+
+        // Event listener para el botón de Google OAuth
+        document.getElementById('googleLoginBtn').addEventListener('click', () => {
+            window.location.href = `${CONFIG.API_BASE_URL}/auth/google`;
+        });
     }
 
     showRegisterForm() {
@@ -234,29 +239,29 @@ class App {
         content.innerHTML = `
             <div class="max-w-md mx-auto mt-20 fade-in">
                 <div class="card">
-                    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Registrarse</h2>
+                    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Create Account</h2>
                     
                     <form id="register-form">
                         <div class="mb-4">
-                            <label for="full_name" class="block text-sm font-medium text-gray-700 mb-2">Nombre Completo</label>
+                            <label for="full_name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
                             <input type="text" id="full_name" name="full_name" required 
-                                   class="input-field" placeholder="Juan Pérez">
+                                   class="input-field" placeholder="Your Name">
                         </div>
                         
                         <div class="mb-4">
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                             <input type="email" id="email" name="email" required 
-                                   class="input-field" placeholder="tu@email.com">
+                                   class="input-field" placeholder="your@email.com">
                         </div>
                         
                         <div class="mb-4">
-                            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Contraseña</label>
+                            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
                             <input type="password" id="password" name="password" required 
                                    class="input-field" placeholder="********" minlength="6">
                         </div>
                         
                         <div class="mb-6">
-                            <label for="confirm_password" class="block text-sm font-medium text-gray-700 mb-2">Confirmar Contraseña</label>
+                            <label for="confirm_password" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
                             <input type="password" id="confirm_password" name="confirm_password" required 
                                    class="input-field" placeholder="********" minlength="6">
                         </div>
@@ -265,15 +270,15 @@ class App {
                         <div id="register-success" class="hidden mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded"></div>
                         
                         <button type="submit" class="w-full btn-success mb-4">
-                            Registrarse
+                            Register
                         </button>
                     </form>
                     
                     <div class="text-center">
                         <p class="text-sm text-gray-600">
-                            ¿Ya tienes cuenta? 
+                            Already have an account? 
                             <button data-page="login" class="text-blue-600 hover:text-blue-800 underline">
-                                Inicia sesión aquí
+                                Sign in here
                             </button>
                         </p>
                     </div>
@@ -281,12 +286,13 @@ class App {
             </div>
         `;
 
-        // Event listener para el formulario de registro
+        // Event listener for the registration form
         document.getElementById('register-form').addEventListener('submit', (e) => {
             this.handleRegister(e);
         });
     }
 
+    // Manege login form submission
     async handleLogin(e) {
         e.preventDefault();
 
@@ -295,11 +301,12 @@ class App {
         const errorDiv = document.getElementById('login-error');
         const submitBtn = form.querySelector('button[type="submit"]');
 
-        // Mostrar estado de carga
+        // Show loading state
         submitBtn.disabled = true;
         submitBtn.textContent = 'Iniciando sesión...';
         errorDiv.classList.add('hidden');
 
+        // Check fields
         try {
             const credentials = {
                 email: formData.get('email'),
@@ -308,24 +315,24 @@ class App {
 
             const response = await API.login(credentials);
 
-            // Guardar datos del usuario
+            // Save token and user data
             API.saveToken(response.token);
             localStorage.setItem(CONFIG.STORAGE.USER_KEY, JSON.stringify(response.user));
 
             this.currentUser = response.user;
 
-            // Actualizar la interfaz
+            // Update UI
             this.renderNavigation();
             this.showHome();
 
-            console.log('Login exitoso:', response.user);
+            console.log('Login successful:', response.user);
 
         } catch (error) {
             errorDiv.textContent = error.message;
             errorDiv.classList.remove('hidden');
         } finally {
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Iniciar Sesión';
+            submitBtn.textContent = 'Sign in';
         }
     }
 
@@ -338,51 +345,53 @@ class App {
         const successDiv = document.getElementById('register-success');
         const submitBtn = form.querySelector('button[type="submit"]');
 
-        // Validar contraseñas
+        // Validate passwords match
         const password = formData.get('password');
         const confirmPassword = formData.get('confirm_password');
 
         if (password !== confirmPassword) {
-            errorDiv.textContent = 'Las contraseñas no coinciden';
+            errorDiv.textContent = 'Passwords do not match';
             errorDiv.classList.remove('hidden');
             successDiv.classList.add('hidden');
             return;
         }
 
-        // Mostrar estado de carga
+        // Show loading state
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Registrando...';
+        submitBtn.textContent = 'Registering...';
         errorDiv.classList.add('hidden');
         successDiv.classList.add('hidden');
 
         try {
+            // Gather form data
             const userData = {
                 full_name: formData.get('full_name'),
                 email: formData.get('email'),
                 password: password
             };
 
+            // Call API
             const response = await API.register(userData);
 
-            successDiv.textContent = 'Registro exitoso! Ahora puedes iniciar sesión.';
+            successDiv.textContent = 'Registration successful! Redirecting to login...';
             successDiv.classList.remove('hidden');
 
-            // Limpiar formulario
+            // Reset form
             form.reset();
 
-            // Redirigir al login después de 2 segundos
+            // Redirect to login after short delay, 2 seconds
             setTimeout(() => {
                 this.showLoginForm();
             }, 2000);
 
-            console.log('Registro exitoso:', response);
+            console.log('Register Successful.', response);
 
         } catch (error) {
             errorDiv.textContent = error.message;
             errorDiv.classList.remove('hidden');
         } finally {
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Registrarse';
+            submitBtn.textContent = 'Register';
         }
     }
 
@@ -396,11 +405,11 @@ class App {
         content.innerHTML = `
             <div class="max-w-2xl mx-auto mt-10 fade-in">
                 <div class="card">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Mi Perfil</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">My Profile</h2>
                     
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                             <p class="text-gray-900">${this.currentUser.full_name}</p>
                         </div>
                         
@@ -417,30 +426,30 @@ class App {
                     
                     <div class="mt-6 pt-6 border-t">
                         <button id="test-api" class="btn-primary mr-2">
-                            Probar API Protegida
+                            Test API
                         </button>
                         <button onclick="app.showHome()" class="btn-secondary">
-                            Volver al Inicio
+                            Back to Home
                         </button>
                     </div>
                 </div>
             </div>
         `;
 
-        // Event listener para probar API
+        // Test API button
         document.getElementById('test-api').addEventListener('click', async () => {
             try {
                 const response = await API.getProfile();
-                alert('API funcionando: ' + JSON.stringify(response, null, 2));
+                alert('API Working: ' + JSON.stringify(response, null, 2));
             } catch (error) {
-                alert('Error en API: ' + error.message);
+                alert('API Error: ' + error.message);
             }
         });
     }
 
     showAdminPanel() {
         if (!this.currentUser || this.currentUser.role !== 'admin') {
-            alert('Acceso denegado');
+            alert('Access denied. Admins only.');
             this.showHome();
             return;
         }
@@ -489,12 +498,12 @@ class App {
         this.currentUser = null;
         this.renderNavigation();
         this.showHome();
-        console.log('Usuario deslogueado');
+        console.log('User logged out');
     }
 }
 
-// Inicializar la aplicación
+// Start the app
 const app = new App();
 
-// Hacer disponible globalmente para debugging
+// Make app globally accessible for debugging
 window.app = app;
