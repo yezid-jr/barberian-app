@@ -31,9 +31,9 @@ class Database:
     def test_connection(self):
         conn = self.get_connection()
         if conn:
-            print("✅ Conexión a la base de datos exitosa")
+            print("✅ Connection successful to database")
             conn.close()
             return True
         else:
-            print("❌ Error en la conexión a la base de datos")
+            print("❌ Error connecting to database")
             return False

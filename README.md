@@ -7,26 +7,48 @@ pip install -r requirements.txt
 barberian-app/
 ├── backend/
 │   ├── app/
-│   │   ├── __init__.py
 │   │   ├── config/
+│   │   │   ├── __pycache__/
+│   │   │   └── database.py
 │   │   ├── controllers/
+│   │   │   ├── __pycache__/
+│   │   │   └── auth_controller.py
 │   │   ├── models/
+│   │   │   ├── __pycache__/
+│   │   │   ├── auth_provider.py
+│   │   │   └── user.py
 │   │   ├── routes/
+│   │   │   ├── __pycache__/
+│   │   │   ├── auth_routes.py
+│   │   │   └── general_routes.py
 │   │   └── utils/
+│   │       ├── __pycache__/
+│   │       ├── auth_decorator.py
+│   │       └── jwt_helper.py
+│   ├── venv/
+│   ├── .env
 │   ├── requirements.txt
 │   └── main.py
+├── database/
+│   └──barbarian-db.sql
 ├── frontend/
-│   ├── public/
+│   ├── node_modules/
 │   ├── src/
 │   │   ├── assets/
 │   │   ├── js/
+│   │   │   ├── utils
+│   │   │   │   └── api.js
+│   │   │   ├── config.js
+│   │   │   └── main.js
 │   │   ├── styles/
+│   │   │   └── main.css
 │   │   └── pages/
 │   ├── index.html
+│   ├── package-lock.json
 │   ├── package.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
 │   └── vite.config.js
-├── database/
-│   └── barbarian-db.sql
 └── README.md
 
 para verificar que todo funciona

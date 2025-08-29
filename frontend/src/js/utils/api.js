@@ -106,6 +106,14 @@ class API {
             includeAuth: true
         });
     }
+
+    // Verify Google OAuth token
+    async googleLogin(googleToken) {
+        return this.request(CONFIG.ENDPOINTS.AUTH.GOOGLE_VERIFY, {
+            method: 'POST',
+            body: JSON.stringify({ token: googleToken })
+        });
+    }
 }
 
 // =============================

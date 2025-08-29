@@ -27,15 +27,8 @@ def profile():
 def admin_test():
     return jsonify({"message": "Acceso de admin exitoso", "user": request.current_user})
 
-# Rutas de Google OAuth (temporalmente deshabilitadas)
-@auth_bp.route('/google/url', methods=['GET'])
-def google_login_url():
-    return jsonify({"error": "Google OAuth no configurado aún"}), 501
-
-@auth_bp.route('/google/callback', methods=['GET'])
-def google_callback():
-    return jsonify({"error": "Google OAuth no configurado aún"}), 501
-
+# Ruta de Google OAuth
 @auth_bp.route('/google/verify', methods=['POST'])
 def google_verify():
-    return jsonify({"error": "Google OAuth no configurado aún"}), 501
+    """Verificar token de Google y hacer login/register automático"""
+    return auth_controller.google_oauth()
